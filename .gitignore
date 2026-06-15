@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# documento clínico de origen (no publicar — solo referencia local)
+*.docx
