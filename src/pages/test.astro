@@ -1,0 +1,14 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TestWizard from "../components/test/TestWizard.tsx";
+---
+
+<Layout title="Cuestionario · Tamizaje TEA">
+  <a
+    href="/"
+    class="text-muted-foreground hover:text-foreground absolute top-4 left-4 text-sm transition-colors"
+  >
+    ← Inicio
+  </a>
+  <TestWizard client:only="react" />
+</Layout>

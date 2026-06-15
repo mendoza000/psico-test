@@ -1,17 +1,65 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import { DISCLAIMER } from "../lib/test/questions";
 
+const blocks = [
+  { tag: "Bloque A", text: "Comunicación e interacción social" },
+  { tag: "Bloque B", text: "Conductas repetitivas, rigidez y sensorialidad" },
+  { tag: "Bloque C", text: "Inicio temprano de las características" },
+  { tag: "Bloque D", text: "Impacto en la vida diaria" },
+  { tag: "Bloque E", text: "Otras condiciones a revisar" },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Cuestionario orientativo TEA">
+  <main class="mx-auto w-full max-w-2xl px-4 py-12 sm:py-20">
+    <div class="space-y-3 text-center">
+      <p class="text-primary text-sm font-semibold tracking-wide uppercase">
+        Herramienta de orientación
+      </p>
+      <h1 class="text-3xl font-bold tracking-tight text-balance sm:text-4xl">
+        Cuestionario orientativo de rasgos compatibles con el espectro autista
+      </h1>
+      <p class="text-muted-foreground mx-auto max-w-xl leading-relaxed text-pretty">
+        Basado en las áreas clínicas del DSM-5-TR. Te tomará unos minutos.
+        Al final obtendrás un resultado que podés descargar o capturar y
+        compartir con tu profesional.
+      </p>
+    </div>
+
+    <!-- Aviso obligatorio ANTES del test -->
+    <div class="border-amber-200 bg-amber-50 mt-8 rounded-xl border p-5">
+      <h2 class="text-amber-950 font-semibold">Leé esto antes de empezar</h2>
+      <p class="text-amber-900/90 mt-2 text-sm leading-relaxed">{DISCLAIMER}</p>
+    </div>
+
+    <div class="mt-8 rounded-xl border bg-card p-6">
+      <h2 class="font-semibold">¿Qué vas a responder?</h2>
+      <ul class="mt-4 space-y-3">
+        {
+          blocks.map((b) => (
+            <li class="flex items-start gap-3 text-sm">
+              <span class="bg-primary/10 text-primary mt-0.5 rounded-md px-2 py-0.5 text-xs font-semibold whitespace-nowrap">
+                {b.tag}
+              </span>
+              <span class="text-muted-foreground">{b.text}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="text-muted-foreground mt-4 text-xs leading-relaxed">
+        Cada pregunta se responde con una escala simple. Podés volver atrás en
+        cualquier momento y tu avance se guarda automáticamente.
+      </p>
+    </div>
+
+    <div class="mt-8 flex justify-center">
+      <a
+        href="/test"
+        class="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-12 items-center justify-center rounded-lg px-8 text-base font-medium shadow-sm transition-colors"
+      >
+        Comenzar el cuestionario
+      </a>
+    </div>
+  </main>
+</Layout>
